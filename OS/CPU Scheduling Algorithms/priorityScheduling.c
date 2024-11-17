@@ -1,3 +1,8 @@
+// Priority scheduling is a CPU scheduling algorithm that selects processes 
+// based on their priority. Processes with higher priority are executed 
+// before those with lower priority. This approach can be preemptive or 
+// non-preemptive.
+
 #include <stdio.h>
 
 void sortProcesses(int n, int bt[], int pr[], int proc[]) {

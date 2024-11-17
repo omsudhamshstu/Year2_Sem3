@@ -1,3 +1,8 @@
+// First-Come, First-Served (FCFS) scheduling is a CPU scheduling algorithm 
+// that executes processes in the order they arrive in the ready queue. 
+// This approach is simple and easy to implement but can lead to the 
+// "convoy effect" where shorter processes wait for longer ones to finish.
+
 #include <stdio.h>
 
 void findWaitingTime(int n, int bt[], int wt[]) {

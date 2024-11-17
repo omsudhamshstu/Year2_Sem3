@@ -1,3 +1,7 @@
+// Shortest Job First (SJF) scheduling is a CPU scheduling algorithm 
+// that selects the process with the smallest burst time for execution next. 
+// This approach minimizes the average waiting time for processes.
+
 #include <stdio.h>
 
 void sortProcesses(int n, int bt[], int proc[]) {
@@ -26,9 +30,16 @@ void findAverageTime(int n, int bt[]) {
     for (int i = 0; i < n; i++)
         tat[i] = bt[i] + wt[i];
 
+    int total_wt = 0, total_tat = 0;
     printf("Processes  Burst Time  Waiting Time  Turn-Around Time\n");
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) {
+        total_wt += wt[i];
+        total_tat += tat[i];
         printf(" %d\t\t%d\t\t%d\t\t%d\n", proc[i], bt[i], wt[i], tat[i]);
+    }
+
+    printf("Average waiting time = %.2f\n", (float)total_wt / n);
+    printf("Average turn-around time = %.2f\n", (float)total_tat / n);
 }
 
 int main() {

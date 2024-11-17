@@ -1,3 +1,8 @@
+//? Round Robin scheduling is a CPU scheduling algorithm that assigns a fixed 
+//? time quantum to each process in the ready queue in a cyclic order. 
+//? This approach ensures that all processes get an equal share of CPU time 
+//? and improves response time for short processes.
+
 #include <stdio.h>
 
 void findAverageTime(int n, int bt[], int quantum) {
