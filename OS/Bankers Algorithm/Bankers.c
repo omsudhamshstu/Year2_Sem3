@@ -1,88 +1,84 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#define MAX_PROCESSES 5
-#define MAX_RESOURCES 3
+#define P 5 // Number of processes
+#define R 3 // Number of resources
 
-int available[MAX_RESOURCES];
-int maximum[MAX_PROCESSES][MAX_RESOURCES];
-int allocation[MAX_PROCESSES][MAX_RESOURCES];
-int need[MAX_PROCESSES][MAX_RESOURCES];
-
-void calculateNeed(int processes, int resources) {
-    for (int i = 0; i < processes; i++)
-        for (int j = 0; j < resources; j++)
-            need[i][j] = maximum[i][j] - allocation[i][j];
-}
-
-bool isSafe(int processes, int resources) {
-    int work[MAX_RESOURCES];
-    bool finish[MAX_PROCESSES] = {false};
-    for (int i = 0; i < resources; i++)
-        work[i] = available[i];
-
-    int safeSequence[MAX_PROCESSES];
+// Function to find if the system is in a safe state
+bool isSafe(int processes[], int avail[], int max[][R], int allot[][R]) {
+    int need[P][R];
+    bool finish[P] = {0};
+    int safeSeq[P];
+    int work[R];
     int count = 0;
 
-    while (count < processes) {
-        bool found = false;
-        for (int i = 0; i < processes; i++) {
-            if (!finish[i]) {
-                bool canAllocate = true;
-                for (int j = 0; j < resources; j++)
-                    if (need[i][j] > work[j]) {
-                        canAllocate = false;
-                        break;
-                    }
+    // Calculate the need matrix
+    for (int i = 0; i < P; i++) {
+        for (int j = 0; j < R; j++) {
+            need[i][j] = max[i][j] - allot[i][j];
+        }
+    }
 
-                if (canAllocate) {
-                    for (int j = 0; j < resources; j++)
-                        work[j] += allocation[i][j];
-                    safeSequence[count++] = i;
-                    finish[i] = true;
+    // Initialize the work vector
+    for (int i = 0; i < R; i++)
+        work[i] = avail[i];
+
+    // Find a safe sequence
+    while (count < P) {
+        bool found = false;
+        for (int p = 0; p < P; p++) {
+            if (!finish[p]) {
+                // Check if need <= work
+                int j;
+                for (j = 0; j < R; j++)
+                    if (need[p][j] > work[j])
+                        break;
+
+                if (j == R) { // If all resources are allocated
+                    for (int k = 0; k < R; k++)
+                        work[k] += allot[p][k];
+                    safeSeq[count++] = p;
+                    finish[p] = 1;
                     found = true;
                 }
             }
         }
-        if (!found)
+        if (!found) {
+            printf("System is not in a safe state\n");
             return false;
+        }
     }
 
     printf("System is in a safe state.\nSafe sequence is: ");
-    for (int i = 0; i < processes; i++)
-        printf("%d ", safeSequence[i]);
+    for (int i = 0; i < P; i++)
+        printf("%d ", safeSeq[i]);
     printf("\n");
     return true;
 }
 
+// Main function
 int main() {
-    int processes, resources;
+    int processes[] = {0, 1, 2, 3, 4};
 
-    printf("Enter the number of processes: ");
-    scanf("%d", &processes);
+    int avail[] = {3, 3, 2};
 
-    printf("Enter the number of resources: ");
-    scanf("%d", &resources);
+    int max[][R] = {
+        {7, 5, 3},
+        {3, 2, 2},
+        {9, 0, 2},
+        {2, 2, 2},
+        {4, 3, 3}
+    };
 
-    printf("Enter the available resources: ");
-    for (int i = 0; i < resources; i++)
-        scanf("%d", &available[i]);
+    int allot[][R] = {
+        {0, 1, 0},
+        {2, 0, 0},
+        {3, 0, 2},
+        {2, 1, 1},
+        {0, 0, 2}
+    };
 
-    printf("Enter the maximum resources for each process:\n");
-    for (int i = 0; i < processes; i++)
-        for (int j = 0; j < resources; j++)
-            scanf("%d", &maximum[i][j]);
-
-    printf("Enter the allocated resources for each process:\n");
-    for (int i = 0; i < processes; i++)
-        for (int j = 0; j < resources; j++)
-            scanf("%d", &allocation[i][j]);
-
-    calculateNeed(processes, resources);
-
-    if (!isSafe(processes, resources))
-        printf("System is not in a safe state.\n");
-
+    isSafe(processes, avail, max, allot);
     return 0;
 }
 
