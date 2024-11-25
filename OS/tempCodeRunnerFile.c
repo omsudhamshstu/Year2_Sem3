@@ -1,4 +1,4 @@
-// classical problem synchronisation
+// classical problem synchronisation = Producer Consumer Problem (You can Ignore this if you already know)
 
 #include <stdio.h>
 void main() {

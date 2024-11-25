@@ -1,25 +1,21 @@
 #include <stdio.h>
-#include <unistd.h>  // Required for pipe() and fork()
-#include <string.h>  // For memset (optional)
+#include <unistd.h>
 
 int main() {
     int pipefd[2];
     char buffer[20];
 
-    if (pipe(pipefd) == -1) {
-        perror("Pipe failed");
-        return 1;
-    }
+    pipe(pipefd); // Create pipe
 
-    if (fork() == 0) { // Child Process
-        close(pipefd[0]); // Close unused read end
-        write(pipefd[1], "Hello, Pipe!", 13);
-        close(pipefd[1]); // Close write end after use
-    } else { // Parent Process
-        close(pipefd[1]); // Close unused write end
-        read(pipefd[0], buffer, sizeof(buffer));
-        printf("Parent received: %s\n", buffer);
-        close(pipefd[0]); // Close read end after use
+    if (fork() == 0) { // Child Process (Reader)
+        close(pipefd[1]); // Close write end
+        read(pipefd[0], buffer, sizeof(buffer)); // Read from pipe
+        printf("Child received: %s\n", buffer);
+        close(pipefd[0]); // Close read end
+    } else { // Parent Process (Writer)
+        close(pipefd[0]); // Close read end
+        write(pipefd[1], "Hello Pipe", 11); // Write to pipe
+        close(pipefd[1]); // Close write end
     }
     return 0;
 }
