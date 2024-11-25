@@ -1,5 +1,3 @@
-// classical problem synchronisation
-
 #include <stdio.h>
 void main() {
   int buffer[10], bufferSize, in, out, produce, consume, choice = 0;
