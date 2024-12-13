@@ -27,3 +27,18 @@ def analyze_text_file(file_path):
 # Example usage
 file_path = 'merged_file.txt'
 analyze_text_file(file_path)
+
+#OR use this#
+#====================#
+def analFile(file):
+    with open(file, 'r') as f:
+        content = f.read()
+    vowels = sum(1 for c in content if c.lower() in 'aeiou')
+    spaces = content.count(' ')
+    lower = sum(1 for c in content if c.islower())
+    upper = sum(1 for c in content if c.isupper())
+    words = len(content.split())
+    print(f"Words: {words}, Vowels: {vowels}, Spaces: {spaces}, Lowercase: {lower}, Uppercase: {upper}")
+
+# Example usage:
+analFile('sample.txt')
