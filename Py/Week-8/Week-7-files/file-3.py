@@ -23,3 +23,11 @@ def find_most_frequent_word(file_path):
 # Example usage
 file_path = 'file2.txt'
 find_most_frequent_word(file_path)
+
+
+#OR use this code#
+from collections import Counter
+
+with open("sample.txt") as f:
+    word = Counter(f.read().split()).most_common(1)[0]
+    print(f"Word: {word[0]}, Count: {word[1]}")

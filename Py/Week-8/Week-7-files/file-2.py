@@ -28,3 +28,15 @@ def check_words_in_file(file_path, words_to_check):
 file_path = 'file1.txt'
 words_to_check = ['Learning', 'fun']
 check_words_in_file(file_path, words_to_check)
+#===========================================#
+# OR use this code #
+
+
+
+def find_words_in_file(filename, words):
+    with open(filename, 'r') as file:
+        content = file.read()
+    found_words = [word for word in words if word in content]
+    print("Words found:", ', '.join(found_words))
+
+find_words_in_file('sample.txt', ['fox', 'quick'])
