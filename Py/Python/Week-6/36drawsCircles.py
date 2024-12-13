@@ -2,25 +2,19 @@
 # function called draw_circle that draws circles on the canvas
 
 import turtle
-
 class Circle:
     def __init__(self, radius, color):
-        self.radius = radius
-        self.color = color
-
-    def draw_circle(self):
+        self.radius=radius
+        self.color=color
+    def draw(self):
         turtle.color(self.color)
         turtle.circle(self.radius)
-
-circle1 = Circle(50, "blue")
-circle2 = Circle(100, "red")
-
 turtle.speed(1)
-circle1.draw_circle()
+Circle(50, "red").draw()
 turtle.penup()
 turtle.setposition(150, 0)
 turtle.pendown()
-circle2.draw_circle()
+Circle(100, "blue").draw()
 
 turtle.hideturtle()
 turtle.done()
