@@ -33,3 +33,44 @@ label_result = tk.Label(root, text="")
 label_result.grid(row=3, column=0, columnspan=2, padx=10, pady=10)
 
 root.mainloop()
+
+
+#================#
+#Another Code
+import tkinter as tk
+
+def submit():
+    print(f"Name: {entry_name.get()}")
+    print(f"Age: {entry_age.get()}")
+
+def reset():
+    entry_name.delete(0, tk.END)
+    entry_age.delete(0, tk.END)
+
+# Create the main window
+root = tk.Tk()
+root.title("Wizard Window")
+root.geometry("300x200")
+
+# Labels
+label_name = tk.Label(root, text="Name:")
+label_name.pack(pady=5)
+
+entry_name = tk.Entry(root)
+entry_name.pack(pady=5)
+
+label_age = tk.Label(root, text="Age:")
+label_age.pack(pady=5)
+
+entry_age = tk.Entry(root)
+entry_age.pack(pady=5)
+
+# Buttons
+submit_btn = tk.Button(root, text="Submit", command=submit)
+submit_btn.pack(pady=5)
+
+reset_btn = tk.Button(root, text="Reset", command=reset)
+reset_btn.pack(pady=5)
+
+# Start the GUI loop
+root.mainloop()
