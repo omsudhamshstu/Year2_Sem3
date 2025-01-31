@@ -1,3 +1,4 @@
+package OOP;
 import java.util.*;
     class Numbers {
         int x, y;
@@ -15,7 +16,7 @@ import java.util.*;
             System.out.println("The Product of the two integers is: " + (x*y));
         }
     }
-    public class OOPconcepts {
+    public class InheritanceSingleLevel {
     public static void main(String[] args) {
         Derived d1 = new Derived();
         d1.read();
