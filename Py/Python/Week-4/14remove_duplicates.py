@@ -3,6 +3,10 @@
 def remove_duplicates(arr):
     return list(set(arr))
 
-original_arr = [1, 2, 2, 3, 4, 4, 5, 6, 6]
-print("Original:", original_arr)
-print("Unique:", remove_duplicates(original_arr))
+# original_arr = [1, 2, 2, 3, 4, 4, 5, 6, 6]
+# print("Original:", original_arr)
+# print("Unique:", remove_duplicates(original_arr))
+
+arr = [1, 1, 2, 3, 4, 4, 5]
+print(f"Original: {arr}")
+print("Unique:",remove_duplicates(arr))
