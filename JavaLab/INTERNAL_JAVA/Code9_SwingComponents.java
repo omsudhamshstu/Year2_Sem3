@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Main {
+public class Code9_SwingComponents {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Swing Example");
         JButton button = new JButton("Click Me");
