@@ -1,6 +1,6 @@
-# OS, Python (SEM-3), OOP Java, and AI (SEM-4) Codes
+# OS, Python (SEM-3), OOP Java, AI (SEM-4) Codes
 
-## Internal | External
+### Internal | External
 
 ---
 
