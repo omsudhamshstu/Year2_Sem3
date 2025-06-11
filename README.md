@@ -13,3 +13,23 @@ Access the Google Colab Notebooks using the links below:
 
 - **AI Codes Only (SEM-4, For Running the Codes):**  
   [Open in Colab](https://colab.research.google.com/drive/12KhMb6AZajVh0hHi-yig-Na1y2OrdWcX?usp=sharing)
+
+---
+
+### Java Code Execution Note
+
+Some of the Java codes require execution via the command prompt or terminal using the `javac` (Java compiler) and `java` commands. Make sure to compile your Java files with:
+
+```sh
+javac FileName.java
+```
+
+and then run them using:
+
+```sh
+java FileName
+```
+
+Replace `FileName` with the actual name of your Java class (without the `.java` extension).
+
+---
