@@ -36,6 +36,8 @@ Replace `FileName` with the actual name of your Java class (without the `.java` 
 
 ## Java OOP Viva Voce Questions (With Answers) - _Just an Assumption_
 
+ℹ️ Ai Info
+
 This section contains potential viva voce questions with answers, covering **general OOP concepts** and **file-specific implementations**.
 
 ---
