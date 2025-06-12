@@ -23,3 +23,27 @@ public class Code8_AbstractClass {
 
 // Output: Bark
 //         I can eat.
+// ************************************ //
+//Or this [without @Override]
+abstract class Animal {
+    abstract void weep();
+    void eat() {
+        System.out.println("Eating...");
+    }
+}
+
+class Dog extends Animal {
+    void weep() {
+        System.out.println("Weeping...");
+    }
+}
+
+class Sample {
+    public static void main(String[] args) {
+        // new Dog().eat();
+        // new Dog().weep();
+        Dog d1 = new Dog();
+        d1.eat();
+        d1.weep();
+    }
+}
