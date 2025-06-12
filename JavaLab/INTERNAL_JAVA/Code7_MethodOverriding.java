@@ -18,3 +18,23 @@ public class Code7_MethodOverriding {
     }
 }
 // Output: Bark
+
+// [OR]
+
+class A1 {
+void callme() {
+System.out.println("super class's method");
+    }
+}
+
+class B1 extends A1 {
+void callme() {
+System.out.println("sub class's method");
+    }
+}
+public class MethodOverridingDemo {
+public static void main(String args[]){
+B1 obj = new B1();
+obj.callme();
+    }
+}
